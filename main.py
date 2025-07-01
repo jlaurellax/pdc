@@ -16,7 +16,7 @@ class JournalEntry:
     date: str
 
 
-def load_entries():
+def load_entries() -> list[JournalEntry]:
     """Load journal entries from the JSON file."""
 
     try:
@@ -35,13 +35,13 @@ def load_entries():
         return []
 
 
-def save_entries(entries):
+def save_entries(entries: list[JournalEntry]) -> None:
     """Save journal entries to the JSON file."""
     with open(DB_FILE, "w") as f:
         json.dump([asdict(entry) for entry in entries], f, indent=4)
 
 
-def add_entry(title, content):
+def add_entry(title: str, content: str) -> None:
     """Create and save a new journal entry."""
     entries = load_entries()
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -50,7 +50,7 @@ def add_entry(title, content):
     save_entries(entries)
 
 
-def list_entries(entries):
+def list_entries(entries: list[JournalEntry]) -> None:
     """Print all journal entries."""
     if not entries:
         print("No journal entries found.")
