@@ -3,14 +3,9 @@ from pathlib import Path
 from dataclasses import dataclass, asdict
 from datetime import datetime
 
-### File set-up. ###
-
 
 DB_FILE = Path("journal.json")
 DB_FILE.touch(exist_ok=True)
-
-
-### Data model set-up. ###
 
 
 @dataclass(slots=True)
@@ -19,9 +14,6 @@ class JournalEntry:
     title: str
     content: str
     date: str
-
-
-### Input/Output set-up. ###
 
 
 def load_entries():
@@ -47,9 +39,6 @@ def save_entries(entries):
     """Save journal entries to the JSON file."""
     with open(DB_FILE, "w") as f:
         json.dump([asdict(entry) for entry in entries], f, indent=4)
-
-
-### Add Entry & List Entries
 
 
 def add_entry(title, content):
