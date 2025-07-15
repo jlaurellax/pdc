@@ -1,0 +1,5 @@
+{
+    "editor.formatOnSave": true,
+    "black-formatter.importStrategy": "fromEnvironment",
+    "autopep8.importStrategy": "fromEnvironment"
+}
